@@ -1,16 +1,45 @@
-# mini_curso_prompt_eng_usp
+# 🐛 Caça aos Bugs - Flutter Edition
 
-A new Flutter project.
+Bem-vindo ao exercício prático de **Debugging e Refatoração** em Flutter. Este projeto foi criado como parte de um mini-curso de Prompt Engineering, com o objetivo de identificar e corrigir erros comuns no desenvolvimento mobile.
 
-## Getting Started
+## 📋 Sobre o Projeto
 
-This project is a starting point for a Flutter application.
+O aplicativo simula um cenário real onde um desenvolvedor se depara com um código "quebrado". O objetivo foi analisar o código, identificar falhas e aplicar as correções adequadas.
 
-A few resources to get you started if this is your first Flutter project:
+**Os desafios enfrentados e resolvidos foram:**
+1.  **Erro de Sintaxe:** Falta de pontuação bloqueando a compilação.
+2.  **Erro de Lógica (Estado):** A tela não atualizava ao alterar variáveis.
+3.  **Erro de Layout (Overflow):** Texto longo quebrando a visualização da tela.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Tecnologias Utilizadas
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* [Flutter](https://flutter.dev/) - Framework UI do Google.
+* [Dart](https://dart.dev/) - Linguagem de programação.
+* **Material Design** - Padrão visual.
+
+## 🛠️ Soluções Aplicadas
+
+Para tornar o código funcional e robusto, as seguintes correções foram implementadas:
+
+### 1. Gerenciamento de Estado
+Utilizamos o `setState(() {})` para notificar o Flutter de que a variável `_likes` foi alterada, forçando a reconstrução da UI para exibir o novo valor.
+
+### 2. Layout Responsivo
+Envolvemos o widget de texto em um `Expanded` dentro da `Row`. Isso garante que o texto respeite os limites da tela e quebre a linha automaticamente, evitando o erro de *RenderFlex overflow*.
+
+## 📦 Como Executar
+
+Para rodar este projeto na sua máquina local:
+
+1.  **Clone o repositório** (se ainda não o fez).
+2.  **Baixe as dependências:**
+    ```bash
+    flutter pub get
+    ```
+3.  **Execute o app:**
+    ```bash
+    flutter run
+    ```
+
+---
+*Desenvolvido durante a jornada de aprendizado em Prompt Engineering.*
