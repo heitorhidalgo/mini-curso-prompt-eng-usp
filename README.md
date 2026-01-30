@@ -1,45 +1,71 @@
-# 🐛 Caça aos Bugs - Flutter Edition
+# 📱 Mini-Curso: Prompt Engineering com Flutter
 
-Bem-vindo ao exercício prático de **Debugging e Refatoração** em Flutter. Este projeto foi criado como parte de um mini-curso de Prompt Engineering, com o objetivo de identificar e corrigir erros comuns no desenvolvimento mobile.
+Este repositório documenta a jornada prática realizada durante o mini-curso de **Prompt Engineering**, onde os desafios originais (focados em HTML/JS) foram estrategicamente **adaptados para o ecossistema Flutter**.
 
-## 📋 Sobre o Projeto
-
-O aplicativo simula um cenário real onde um desenvolvedor se depara com um código "quebrado". O objetivo foi analisar o código, identificar falhas e aplicar as correções adequadas.
-
-**Os desafios enfrentados e resolvidos foram:**
-1.  **Erro de Sintaxe:** Falta de pontuação bloqueando a compilação.
-2.  **Erro de Lógica (Estado):** A tela não atualizava ao alterar variáveis.
-3.  **Erro de Layout (Overflow):** Texto longo quebrando a visualização da tela.
+O objetivo foi utilizar IA Generativa para acelerar o desenvolvimento mobile, focando em boas práticas de arquitetura, Clean Code e UX.
 
 ## 🚀 Tecnologias Utilizadas
+* **Flutter** (Framework UI)
+* **Dart** (Linguagem)
+* **Git/GitHub** (Versionamento)
+* **Material Design** (Padrões Visuais)
 
-* [Flutter](https://flutter.dev/) - Framework UI do Google.
-* [Dart](https://dart.dev/) - Linguagem de programação.
-* **Material Design** - Padrão visual.
+---
 
-## 🛠️ Soluções Aplicadas
+## 📚 Jornada de Aprendizado
 
-Para tornar o código funcional e robusto, as seguintes correções foram implementadas:
+Abaixo, a evolução dos exercícios realizados, partindo do básico até formulários complexos.
 
-### 1. Gerenciamento de Estado
-Utilizamos o `setState(() {})` para notificar o Flutter de que a variável `_likes` foi alterada, forçando a reconstrução da UI para exibir o novo valor.
+### 1️⃣ Hello World Dinâmico (State Management)
+* **Desafio:** Criar um botão que altera o texto da tela.
+* **Conceitos Flutter:** `StatefulWidget`, `setState`, hierarquia de Widgets.
+* **Adaptação:** Migração da manipulação de DOM (Web) para Reconstrução de Árvore de Widgets (Mobile).
 
-### 2. Layout Responsivo
-Envolvemos o widget de texto em um `Expanded` dentro da `Row`. Isso garante que o texto respeite os limites da tela e quebre a linha automaticamente, evitando o erro de *RenderFlex overflow*.
+### 2️⃣ Lista de Tarefas (List Manipulation)
+* **Desafio:** Input de texto que adiciona itens em uma lista visual.
+* **Conceitos Flutter:** `ListView.builder`, `TextEditingController`, Arrays dinâmicos.
+* **Destaque:** Renderização eficiente de listas infinitas.
 
-## 📦 Como Executar
+### 3️⃣ Calculadora Funcional (Logic & Layout)
+* **Desafio:** Calculadora com 4 operações básicas e histórico.
+* **Conceitos Flutter:** `GridView` vs `Column/Row` layouts, `Parsing` de String para Double, lógica de UX.
+* **Destaque:** Layout responsivo e tratamento de concatenação de strings.
 
-Para rodar este projeto na sua máquina local:
+### 4️⃣ Caça aos Bugs (Debugging)
+* **Desafio:** Identificar e corrigir propositalmente erros de Sintaxe, Estado e Layout.
+* **Correções Aplicadas:**
+    * ✅ Uso de `Expanded` para evitar *RenderFlex Overflow*.
+    * ✅ Implementação correta do `setState` para atualização de tela.
+    * ✅ Correção de sintaxe Dart.
 
-1.  **Clone o repositório** (se ainda não o fez).
-2.  **Baixe as dependências:**
+### 5️⃣ Cadastro Seguro (Forms & Validation)
+* **Desafio Final:** Tela de cadastro completa com validações robustas.
+* **Conceitos Flutter:** `Form`, `GlobalKey<FormState>`, `TextFormField`, `RegExp`.
+* **Funcionalidades:**
+    * 🔒 **Senha Forte:** Exige mín. 8 caracteres, números e maiúsculas.
+    * 📧 **E-mail Real:** Validação via Regex (requer domínio válido).
+    * 👤 **UX:** Feedback visual com `SnackBar` e helper texts.
+
+---
+
+## 📦 Como executar o projeto
+
+1.  Clone este repositório:
+    ```bash
+    git clone [https://github.com/SEU-USUARIO/mini-curso-prompt-eng-usp.git](https://github.com/SEU-USUARIO/mini-curso-prompt-eng-usp.git)
+    ```
+2.  Entre na pasta:
+    ```bash
+    cd mini-curso-prompt-eng-usp
+    ```
+3.  Baixe as dependências:
     ```bash
     flutter pub get
     ```
-3.  **Execute o app:**
+4.  Execute o app:
     ```bash
     flutter run
     ```
 
 ---
-*Desenvolvido durante a jornada de aprendizado em Prompt Engineering.*
+*Desenvolvido por Heitor Hidalgo com auxílio de IA Generativa.*
