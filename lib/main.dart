@@ -1,64 +1,89 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MeuAppEducativo());
+  runApp(const MeuAppLista());
 }
 
-class MeuAppEducativo extends StatelessWidget {
-  const MeuAppEducativo({super.key});
+class MeuAppLista extends StatelessWidget {
+  const MeuAppLista({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const PaginaInicial(),
+      home: const TelaListaTarefas(),
     );
   }
 }
 
-class PaginaInicial extends StatefulWidget {
-  const PaginaInicial({super.key});
+class TelaListaTarefas extends StatefulWidget {
+  const TelaListaTarefas({super.key});
 
   @override
-  State<PaginaInicial> createState() => _PaginaInicialState();
+  State<TelaListaTarefas> createState() => _TelaListaTarefasState();
 }
 
-class _PaginaInicialState extends State<PaginaInicial> {
-  String _mensagem = "Olá! Clique no botão abaixo.";
+class _TelaListaTarefasState extends State<TelaListaTarefas> {
+  // 1. A fonte da verdade: nossa lista de tarefas
+  final List<String> _tarefas = [];
 
-  void _atualizarMensagem() {
-    setState(() {
-      _mensagem = "Bem-vindo ao mundo do Prompt Engineering com Flutter!";
-    });
+  // 2. O "controle remoto" do campo de texto
+  final TextEditingController _controller = TextEditingController();
+
+  void _adicionarTarefa() {
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        _tarefas.add(_controller.text); // Adiciona na lista
+        _controller.clear(); // Limpa o campo de texto
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Exercício de Prompt"),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                _mensagem,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20),
-              ),
+      appBar: AppBar(title: const Text("Lista Dinâmica Flutter")),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                // Campo de texto expandido
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      labelText: "Nova tarefa",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                // Botão de adicionar
+                ElevatedButton(
+                  onPressed: _adicionarTarefa,
+                  child: const Text("Add"),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _atualizarMensagem,
-              child: const Text("Clique em mim"),
-            )
-          ],
-        ),
+          ),
+          // Lista expandida para ocupar o resto da tela
+          Expanded(
+            child: ListView.builder(
+              itemCount: _tarefas.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: ListTile(
+                    leading: CircleAvatar(child: Text("${index + 1}")),
+                    title: Text(_tarefas[index]),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
